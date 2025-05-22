@@ -1,0 +1,249 @@
+---
+# This is YAML Front Matter. It tells Jekyll how to process the page.
+layout: default  # Uses the _layouts/default.html template
+title: Home      # Sets the page.title variable for the <title> tag
+# You can add other custom variables here if needed for this specific page
+---
+
+<section id="hero" class="hero-section">
+    <div class="container hero-content">
+        <div class="hero-text">
+            <h1 class="hero-title">Sebastian Thomas</h1>
+            <p class="hero-subtitle">Graduate Student in Artificial Intelligence & Software Engineer</p>
+            <p class="hero-description">
+                Specializing in reinforcement learning, generative AI, and algorithmic analysis.
+                Bridging cutting-edge research with practical industry solutions.
+            </p>
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+        <div class="hero-image-container">
+            <img src="{{ '/assets/images/profile.jpg' | relative_url }}" alt="Sebastian Thomas" class="hero-image">
+        </div>
+    </div>
+</section>
+
+<section id="about" class="about-section content-section">
+    <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content-grid">
+            <div class="about-intro-text">
+                <p>Hello! I'm a passionate and driven AI graduate student at Northeastern University with a strong foundation in software engineering from my four years at Commvault. My current focus is on AI-driven decision-making, autonomous systems, and real-world machine learning applications.</p>
+                <p>I thrive at the intersection of theory and application, from developing adaptive learning systems for NPCs in ViZDoom to implementing PPO and A2C for Texas Hold'em. Explore my work to see how I tackle complex AI challenges.</p>
+            </div>
+            <div class="about-cards-container">
+                <div class="about-card">
+                    <h3 class="card-title"><span class="accent-icon">🎓</span> Education & Focus</h3>
+                    <p>Master's in AI at Northeastern University, specializing in <span class="highlight">reinforcement learning, generative AI, and algorithmic analysis</span>.</p>
+                </div>
+                <div class="about-card">
+                    <h3 class="card-title"><span class="accent-icon">💻</span> Experience</h3>
+                    <p>Four years at Commvault working on <span class="highlight">SQL backups, Python development, solving POCs, and enhancing customer experience</span>.</p>
+                </div>
+                <div class="about-card">
+                    <h3 class="card-title"><span class="accent-icon">💡</span> Current Research</h3>
+                    <p>Focusing on <span class="highlight">AI-driven decision-making, autonomous systems, and real-world machine learning applications</span>.</p>
+                </div>
+                <div class="about-card">
+                    <h3 class="card-title"><span class="accent-icon">🌍</span> Beyond AI</h3>
+                    <p>I love <span class="highlight">hiking</span>, diving into <span class="highlight">Harry Potter</span>, analyzing <span class="highlight">Christopher Nolan's</span> films, and <span class="highlight">A.R. Rahman's music</span>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="projects-section content-section alt-bg">
+    <div class="container">
+        <h2 class="section-title">My Projects</h2>
+        <p class="section-intro">Here are some of my recent projects. Each one presented unique challenges and opportunities for learning and growth.</p>
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="{{ '/assets/images/project1.webp' | relative_url }}" alt="Project 1">
+                </div>
+                <div class="project-details">
+                    <h3>Improving multi-agent collaboration in LLMs</h3>
+                    <p>Designed multi-agent benchmarks for evaluating LLM collaboration using custom grid environments. Fine-tuned open-source models to enhance task-driven performance. (*Image by ChatGPT*)</p>
+                    <div class="project-tags">
+                        <span class="tag">Python3</span>
+                        <span class="tag">SQLite3</span>
+                        <span class="tag">LLMs</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/seb-thoms/Multi-Agent-Collaboration-in-LLMs" class="project-link" target="_blank" rel="noopener noreferrer">View Project</a>
+                        <a href="{{ '/assets/files/ImprovingMultiAgentLLMs.pdf' | relative_url }}" class="project-link" target="_blank" rel="noopener noreferrer">Read Paper</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="{{ '/assets/images/project2.png' | relative_url }}" alt="Project 2">
+                </div>
+                <div class="project-details">
+                    <h3>Image Processor Application</h3>
+                    <p>Built a Java-based image processing app using MVC and command patterns, applying TDD with JUnit to enhance resiliency and achieve comprehensive test coverage.</p>
+                    <div class="project-tags">
+                        <span class="tag">Java</span>
+                        <span class="tag">MVC</span>
+                        <span class="tag">TDD</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link disabled-link">View Project (Private)</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="{{ '/assets/images/project3.jpg' | relative_url }}" alt="Project 3">
+                </div>
+                <div class="project-details">
+                    <h3>Voice Separation using RNN</h3>
+                    <p>Developed a high-accuracy voice separation model using RNNs to isolate speakers from audio. Awarded Best Final-Year Project for innovation and technical excellence.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python3</span>
+                        <span class="tag">UIS-RNN</span>
+                        <span class="tag">Audio Processing</span>
+                    </div>
+                     <div class="project-links">
+                        <a href="https://github.com/seb-thoms/VoiceSegregation" class="project-link" target="_blank" rel="noopener noreferrer">View Project</a>
+                        <a href="https://www.ijraset.com/fileserve.php?FID=28414" class="project-link" target="_blank" rel="noopener noreferrer">View Paper</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="resume" class="resume-section content-section">
+    <div class="container">
+        <h2 class="section-title">My Journey</h2>
+        <div class="resume-intro">
+            <p class="section-intro">A brief overview of my professional and academic milestones.</p>
+            <a href="{{ '/assets/files/Resume.pdf' | relative_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary resume-download-btn">Download Full CV</a>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+              <div class="timeline-content">
+                  <div class="timeline-date">Jan 2025 - Present (Part-time)</div>
+                  <h3>AI Instruction Assistant</h3>
+                  <p class="timeline-organization">Centre for Advancing Teaching through Learning and Research, Northeastern University</p>
+                  <ul class="timeline-details-list">
+                      <li>Supporting faculty in integrating AI tools into curriculum development.</li>
+                      <li>Collaborating on developing AI-enhanced learning experiences.</li>
+                  </ul>
+              </div>
+          </div>
+          <div class="timeline-item">
+              <div class="timeline-content">
+                  <div class="timeline-date">Sep 2024 - Expected Dec 2026</div>
+                  <h3>Master of Science in Artificial Intelligence</h3>
+                  <p class="timeline-organization">Northeastern University, Boston</p>
+                  <ul class="timeline-details-list">
+                      <li>Relevant Coursework: Foundations of AI, Programming Design Paradigms, Reinforcement Learning, Algorithms.</li>
+                      <li>Focus: Reinforcement Learning, Generative AI.</li>
+                  </ul>
+                  <div class="timeline-achievements">
+                      <span class="achievement-tag">GPA: 4.0/4.0</span>
+                  </div>
+              </div>
+          </div>
+          <div class="timeline-item">
+              <div class="timeline-content">
+                  <div class="timeline-date">Jan 2020 - Jul 2024</div>
+                  <h3>Senior Engineer</h3>
+                  <p class="timeline-organization">Commvault, Bangalore, India</p>
+                  <ul class="timeline-details-list">
+                      <li>Specialized in MS-SQL data backup/recovery, Python, C++.</li>
+                      <li>Led Python automation efforts, improving efficiency by 30%.</li>
+                      <li>Contributed to 10+ projects on on-prem & cloud databases (Azure, AWS RDS).</li>
+                      <li>Diagnosed and provided fixes for 50+ critical customer escalations.</li>
+                  </ul>
+              </div>
+          </div>
+          <div class="timeline-item">
+              <div class="timeline-content">
+                  <div class="timeline-date">2016 - 2020</div>
+                  <h3>Bachelor of Technology in Computer Science</h3>
+                  <p class="timeline-organization">Mar Athanasius College of Engineering, India</p>
+                  <ul class="timeline-details-list">
+                      <li>Capstone: Voice Separation using RNN (Awarded Best Final-Year Project).</li>
+                      <li>Represented college and won multiple quiz and coding competitions.</li>
+                  </ul>
+                   <div class="timeline-achievements">
+                      <span class="achievement-tag">Best Outgoing Student</span>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+</section>
+
+<section id="blog-highlights" class="blog-highlights-section content-section alt-bg">
+    <div class="container">
+        <h2 class="section-title">From the Blog</h2>
+        <p class="section-intro">Sharing thoughts on AI, development, and more. Visit my blog for all articles.</p>
+        <div class="blog-grid">
+            {% comment %}
+            This Liquid loop will display the 3 most recent blog posts.
+            It assumes your blog posts are in the _posts folder and have front matter
+            variables like 'title', 'date', 'category', 'image', and 'excerpt'.
+            If no posts exist yet, this section will be empty.
+            {% endcomment %}
+            {% for post in site.posts limit:3 %}
+                <div class="blog-card">
+                    <div class="blog-image">
+                        {% if post.image %}
+                            <img src="{{ post.image | relative_url }}" alt="{{ post.title | escape }}">
+                        {% else %}
+                            <img src="{{ '/assets/images/default-blog-image.jpg' | relative_url }}" alt="Default blog post image">
+                        {% endif %}
+                    </div>
+                    <div class="blog-details">
+                        <div class="blog-meta">
+                            <span class="blog-date">{{ post.date | date: "%B %d, %Y" }}</span>
+                            {% if post.category %}
+                                <span class="blog-category">{{ post.category }}</span>
+                            {% endif %}
+                        </div>
+                        <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+                        {% if post.excerpt %}
+                            <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+                        {% else %}
+                            <p>{{ post.content | strip_html | truncatewords: 30 }}</p>
+                        {% endif %}
+                        <a href="{{ post.url | relative_url }}" class="read-more-link">Read More</a>
+                    </div>
+                </div>
+            {% else %}
+                <p>No blog posts yet. Check back soon!</p>
+            {% endfor %}
+        </div>
+        <div class="view-all-posts-container">
+            <a href="{{ '/blog/' | relative_url }}" class="btn btn-secondary">View All Posts</a>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact-section content-section">
+    <div class="container">
+        <h2 class="section-title">Let's Connect</h2>
+        <p class="section-intro">
+            I'm always open to discussing new projects, research collaborations, or just connecting with fellow tech enthusiasts.
+            Feel free to reach out!
+        </p>
+        <div class="contact-links">
+            <a href="https://www.linkedin.com/in/sebastian-thomas-39b453177/" class="contact-link" target="_blank" rel="noopener noreferrer">
+                <span class="contact-icon linkedin-icon">LI</span> LinkedIn
+            </a>
+            <a href="https://github.com/seb-thoms" class="contact-link" target="_blank" rel="noopener noreferrer">
+                <span class="contact-icon github-icon">GH</span> GitHub
+            </a>
+            <a href="mailto:thomas.seba@northeastern.edu" class="contact-link">
+                <span class="contact-icon email-icon">EM</span> thomas.seba@northeastern.edu
+            </a>
+        </div>
+    </div>
+</section>

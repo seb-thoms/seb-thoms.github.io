@@ -1,0 +1,47 @@
+title: Sebastian Thomas - AI & Web Development Portfolio
+email: thomas.seba@northeastern.edu
+description: >- # this means to ignore newlines until "baseurl:"
+  Sebastian Thomas's personal portfolio showcasing projects in AI and web development, 
+  and blog posts on technology and research.
+author: Sebastian Thomas # You can add this
+
+# For GitHub Pages, if your site is username.github.io:
+baseurl: "" # the subpath of your site, e.g. /blog. If hosted at the root, keep it empty.
+url: "https://seb-thoms.github.io" # your site's full URL (replace seb-thoms if your username is different)
+
+# GitHub information (optional, but useful for some themes or links)
+github_username: seb-thoms
+linkedin_username: sebastian-thomas-39b453177 # Example, replace with your actual profile ID or full URL later
+
+# Build settings
+# theme: minima # This is the default, you can change or remove it if you build all styles from scratch
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  # - jekyll-seo-tag # Good for SEO, consider adding: gem install jekyll-seo-tag, then add to Gemfile and here.
+
+# You can define site-wide variables here too
+# Example:
+# social_links:
+#   - { platform: GitHub, url: "https://github.com/seb-thoms" }
+#   - { platform: LinkedIn, url: "https://www.linkedin.com/in/sebastian-thomas-39b453177/" }
+
+# Exclude from processing.
+# The following items will not be processed, by default.
+# Any item listed under the `exclude:` key here will be automatically added to
+# the internal "default list".
+#
+# Excluded items can be processed by explicitly listing the directories or
+# their entries' file path in the `include:` list.
+#
+# exclude:
+#   - .sass-cache/
+#   - .jekyll-cache/
+#   - gemfiles/
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules/
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
