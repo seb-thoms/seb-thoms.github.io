@@ -437,6 +437,35 @@ ul, ol {
   font-size: 1.35rem;
   color: var(--secondary-color);
 }
+
+/* Styling for footnotes within project cards */
+.project-details p .card-footnote { /* Target footnotes within paragraphs in project-details */
+  display: block; /* Make it appear on its own line or adjust as needed */
+  font-size: 0.75em; /* Make it smaller than the surrounding text */
+  color: var(--text-color-secondary); /* Use a muted color */
+  font-style: italic;
+  margin-top: 0.75em; /* Add some space above the footnote */
+  text-align: right; /* Align it to the right, like a traditional footnote in some contexts */
+  /* If you prefer it inline but smaller: */
+  /* display: inline; */
+  /* margin-left: 0.5em; */
+  /* text-align: left; */
+}
+
+/* You could also style it to have a line above it, like a separator */
+
+.project-details p .card-footnote::before {
+  content: "";
+  display: block;
+  width: 50px; 
+  height: 1px;
+  background-color: var(--border-color-light);
+  margin: 0.5em auto 0.5em 0; 
+  margin-left: auto; 
+  margin-right: 0; 
+}
+
+
 .project-details p {
   font-size: 0.9rem;
   color: var(--text-color-secondary);
