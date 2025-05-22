@@ -14,15 +14,19 @@ layout: default
           <span class="post-category">| Category: {{ page.category | capitalize }}</span>
         {% endif %}
       </p>
+    
       {% if page.image %}
-        <div class="post-feature-image">
-          <img src="{{ page.image | relative_url }}" alt="{{ page.title | escape }}">
-        </div>
+        <figure class="post-feature-image-container">
+          <img src="{{ page.image | relative_url }}" alt="{{ page.title | escape }}" class="post-feature-image">
+          {% if page.image_credit %}
+            <figcaption class="feature-image-caption image-credit-footnote">{{ page.image_credit }}</figcaption>
+          {% endif %}
+        </figure>
       {% endif %}
     </header>
-
+    
     <div class="article-body">
-      {{ content }} 
+      {{ content }}
     </div>
 
     <hr class="post-divider">

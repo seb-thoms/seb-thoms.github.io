@@ -963,7 +963,63 @@ ul, ol {
   background-color: var(--border-color-medium);
   margin: 3em 0;
 }
-.post-feature-image { margin-bottom: 2em; }
+
+.article-body .post-image-container {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.article-body .post-image-container img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: var(--border-radius-md);
+  margin-bottom: 0.5em;
+}
+
+.article-body .image-caption { /* Caption for images INSIDE the article body */
+  display: block;
+  text-align: center; /* Default center for these, or adjust as needed */
+  font-size: 0.85em;
+  color: var(--text-color-secondary);
+  font-style: italic;
+  margin-top: 0.5em;
+  padding: 0 1em;
+}
+
+.post-feature-image-container {
+  margin-bottom: 1.5em; /* Space after the figure */
+  /* No specific positioning needed here unless you want to constrain its width */
+}
+
+.post-feature-image { /* Your existing class for the main image */
+  display: block; /* Ensures it behaves as a block for margin auto to work */
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto 0.5em auto; /* Center the image, add some space below for caption */
+  border-radius: var(--border-radius-lg); /* Or your preferred radius */
+}
+
+/* New styles for the image credit footnote */
+.image-credit-footnote {
+  display: block; /* Make it a block element */
+  text-align: right; /* Align text to the right */
+  font-size: 0.8em;  /* Smaller than regular text */
+  font-style: italic; /* Italicized */
+  color: var(--text-color-secondary); /* Muted color */
+  padding-right: 5px; /* Optional: slight padding if it's too close to the edge */
+  margin-top: 0.25em; /* Small space below the image if it's directly under */
+}
+
+/* If your .post-feature-image-container is not full width, 
+   and you want the footnote relative to the image width,
+   you might need to ensure the container itself is only as wide as the image
+   or use more complex CSS if the image is centered within a full-width container.
+   For a centered image, the above should align the text to the right of the available space
+   for the caption block. */
+
 .post-feature-image img { width: 100%; border-radius: var(--border-radius-lg); margin: 0 auto; }
 .post-header .post-meta { font-size: 0.9rem; color: var(--text-color-secondary); margin-bottom: 1em; }
 .post-header .post-meta .post-category { font-weight: 500; color: var(--primary-color); }
