@@ -815,31 +815,46 @@ ul, ol {
 }
 .contact-links {
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* Change to row for horizontal layout */
+  flex-wrap: wrap;    /* Allow wrapping on smaller screens if needed */
+  justify-content: center; /* Center the group of links */
   align-items: center;
-  gap: 1.5rem;
-  margin-top: 2rem;
+  gap: 1rem; /* Adjust gap between links and separators */
+  margin-top: 2.5rem; /* Increased top margin slightly */
 }
+
 .contact-link {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--secondary-color-light);
-  display: flex;
+  /* Existing styles are mostly fine, ensure display is inline-flex */
+  display: inline-flex; 
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.5rem 1rem;
-  border-radius: var(--border-radius-md);
-  transition: color 0.2s ease, background-color 0.2s ease;
+  gap: 0.5rem; /* Reduced gap between icon and text for a tighter look */
+  font-size: 1rem; /* Adjusted font size slightly */
+  font-weight: 500;
+  color: var(--text-color-secondary); /* Use secondary text color for less emphasis than primary links */
+  padding: 0.5rem 0; /* Remove horizontal padding if separators handle spacing */
+  border-radius: 0; /* Remove border-radius if it was for a button-like look */
+  background-color: transparent; /* Ensure no background from previous styles */
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
+
 .contact-link:hover {
   color: var(--primary-color);
-  background-color: color-mix(in srgb, var(--primary-color) 10%, transparent);
+  background-color: transparent; /* No background on hover */
 }
-.contact-icon {
-  font-weight: bold;
-  width: 24px;
-  text-align: center;
-  color: var(--primary-color);
+
+.contact-icon svg {
+  width: 20px;  /* Slightly smaller icons for inline look */
+  height: 20px;
+  fill: currentColor;
+}
+
+/* Styling for the separator (if added via CSS) */
+.contact-link:not(:last-child)::after {
+  content: "|"; /* Or "•" or other symbol */
+  margin-left: 1rem; /* Space after the link, before the separator */
+  color: var(--border-color-medium); /* Color for the separator */
+  font-weight: 300; /* Make it lighter */
 }
 
 /* --- Footer --- */
