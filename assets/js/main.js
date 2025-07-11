@@ -1,34 +1,32 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const topNav = document.querySelector('.top-nav');
-    const navLinksContainer = document.querySelector('.main-navigation');
-    const navLinks = document.querySelectorAll('.main-navigation a[href^="#"]');
+    
+    // --- Mobile Navigation Toggle ---
     const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-    const headerHeight = document.querySelector('.top-nav').offsetHeight;
-    const sections = document.querySelectorAll('main section[id]'); // All sections in main with an ID
-
-    // 1. Mobile Navigation Toggle
-    if (mobileNavToggle && navLinksContainer) {
+    const mainNavigation = document.querySelector('.main-navigation');
+    
+    if (mobileNavToggle && mainNavigation) {
         mobileNavToggle.addEventListener('click', () => {
-            const isNavOpen = mobileNavToggle.getAttribute('aria-expanded') === 'true';
+            const isNavOpen = document.body.classList.contains('nav-open');
             mobileNavToggle.setAttribute('aria-expanded', !isNavOpen);
-            document.body.classList.toggle('nav-open'); // Toggles class on body for .main-navigation transform
+            document.body.classList.toggle('nav-open');
         });
 
-        // Close mobile nav when a link is clicked
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
+        // Close mobile nav when a link inside it is clicked
+        mainNavigation.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
                 if (document.body.classList.contains('nav-open')) {
                     mobileNavToggle.setAttribute('aria-expanded', 'false');
                     document.body.classList.remove('nav-open');
                 }
-            });
+            }
         });
     }
 
-    // 2. Sticky Header on Scroll
+    // --- Sticky Header on Scroll ---
+    const topNav = document.querySelector('.top-nav');
     if (topNav) {
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) { // Add 'scrolled' class after 50px scroll
+            if (window.scrollY > 50) {
                 topNav.classList.add('scrolled');
             } else {
                 topNav.classList.remove('scrolled');
@@ -36,23 +34,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 3. Smooth Scrolling for Anchor Links
+    // --- Smooth Scrolling for Anchor Links ---
+    const headerHeight = 80;
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            e.preventDefault();
+            // Check if the link is part of the main navigation in mobile view before preventing default
+            if (window.innerWidth > 768 || !mainNavigation.contains(e.target)) {
+                 e.preventDefault();
+            }
+           
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
-
             if (targetElement) {
-                let offset = headerHeight;
-                // If the target is the hero section, scroll to very top
-                if (targetId === '#hero') {
-                    offset = 0; 
-                }
-                
                 const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - offset;
-                
+                const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
                 window.scrollTo({
                     top: offsetPosition,
                     behavior: 'smooth'
@@ -61,34 +56,79 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 4. Active Link Highlighting on Scroll
-    function changeActiveLink() {
-        let index = sections.length;
+    // --- General Fade-in Animation Observer ---
+    const faders = document.querySelectorAll('.fade-in-section');
+    const faderOptions = {
+        threshold: 0,
+        rootMargin: "0px 0px -100px 0px"
+    };
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            appearOnScroll.unobserve(entry.target);
+        });
+    }, faderOptions);
+    faders.forEach(fader => appearOnScroll.observe(fader));
 
-        while(--index && window.scrollY + headerHeight * 1.5 < sections[index].offsetTop) {} // headerHeight * 1.5 for better trigger point
-        
-        navLinks.forEach((link) => link.classList.remove('active'));
-        
-        // Check if the current section ID has a corresponding nav link
-        const currentSection = sections[index];
-        if (currentSection) {
-            const activeLink = document.querySelector(`.main-navigation a[href="#${currentSection.id}"]`);
-            if (activeLink) {
-                activeLink.classList.add('active');
+    // --- Staggered Timeline Animation Observer ---
+    const timelineItems = document.querySelectorAll('.timeline-item.hidden');
+    const timelineOptions = { threshold: 0.1 };
+    const timelineObserver = new IntersectionObserver(function(entries, timelineObserver) {
+        entries.forEach((entry, index) => {
+            if (!entry.isIntersecting) return;
+            setTimeout(() => {
+                entry.target.classList.add('visible');
+            }, index * 150);
+            timelineObserver.unobserve(entry.target);
+        });
+    }, timelineOptions);
+    timelineItems.forEach(item => timelineObserver.observe(item));
+
+    // --- Typewriter Animation ---
+    class Typewriter {
+        constructor(el, phrases) {
+            this.el = el;
+            this.phrases = phrases;
+            this.loopNum = 0;
+            this.period = 2000;
+            this.txt = '';
+            this.isDeleting = false;
+            this.tick();
+        }
+        tick() {
+            const i = this.loopNum % this.phrases.length;
+            const fullTxt = this.phrases[i];
+            if (this.isDeleting) {
+                this.txt = fullTxt.substring(0, this.txt.length - 1);
+            } else {
+                this.txt = fullTxt.substring(0, this.txt.length + 1);
             }
+            this.el.innerHTML = `<span class="wrap">${this.txt}</span>`;
+            let delta = 180 - Math.random() * 90;
+            if (this.isDeleting) { delta /= 2; }
+            if (!this.isDeleting && this.txt === fullTxt) {
+                delta = this.period;
+                this.isDeleting = true;
+            } else if (this.isDeleting && this.txt === '') {
+                this.isDeleting = false;
+                this.loopNum++;
+                delta = 500;
+            }
+            setTimeout(() => { this.tick(); }, delta);
         }
     }
 
-    // Initial call and on scroll
-    if (sections.length > 0 && navLinks.length > 0) {
-        changeActiveLink(); // Set active link on page load
-        window.addEventListener('scroll', changeActiveLink);
+    const typewriterElement = document.querySelector('.hero-subtitle');
+    const phrases = [
+        "I build things with AI.",
+        "I'm a Grad Student.",
+        "I'm an IEEE-CS Scholar.",
+        "I'm a Quizzer.",
+        "I'm an Ex-Commvault Engineer.",
+        "I'm Learning, Always."
+    ];
+    if (typewriterElement) {
+        new Typewriter(typewriterElement, phrases);
     }
-
-    // 5. Update Copyright Year (Optional, if you have <span id="current-year"></span>)
-    const yearSpan = document.getElementById('current-year');
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
-    }
-
 });
