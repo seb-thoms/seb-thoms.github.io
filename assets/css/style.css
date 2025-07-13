@@ -543,3 +543,113 @@ h1, h2, h3, h4 { font-weight: 600; color: var(--lightest-slate); line-height: 1.
     box-shadow: 0 10px 30px -15px var(--navy-shadow);
 }
 
+
+.achievements-section .container {
+    max-width: 1100px;
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 1.5rem;
+}
+
+.achievement-card {
+    background-color: var(--dark-navy);
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px -15px var(--navy-shadow);
+    transition: var(--transition);
+}
+
+.achievement-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 30px -15px var(--navy-shadow);
+}
+
+.achievement-card-header {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    cursor: pointer;
+}
+
+.achievement-icon-wrapper {
+    flex-shrink: 0;
+    margin-right: 1.5rem;
+    color: var(--primary-color);
+}
+
+.achievement-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.achievement-title {
+    font-size: 1.15rem;
+    color: var(--lightest-slate);
+    flex-grow: 1;
+    transition: var(--transition);
+}
+
+.achievement-card-header:hover .achievement-title {
+    color: var(--primary-color);
+}
+
+.achievement-toggle-btn {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+.toggle-icon {
+    display: block;
+    position: relative;
+    width: 16px;
+    height: 2px;
+    background-color: var(--slate);
+    transition: transform 0.25s ease-in-out;
+}
+
+.toggle-icon::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--slate);
+    transform: rotate(90deg);
+    transition: transform 0.25s ease-in-out;
+}
+
+.achievement-card.open .toggle-icon {
+    transform: rotate(135deg);
+}
+
+.achievement-card.open .toggle-icon::after {
+    transform: rotate(0deg);
+}
+
+.achievement-card-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease-in-out, padding 0.35s ease-in-out;
+}
+
+.achievement-card-body p {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    color: var(--light-slate);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.achievement-card.open .achievement-card-body {
+    max-height: 500px; /* Adjust as needed */
+}
+
+@media (max-width: 480px) {
+    .achievements-grid {
+        grid-template-columns: 1fr;
+    }
+}
+

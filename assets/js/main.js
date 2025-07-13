@@ -131,4 +131,28 @@ document.addEventListener('DOMContentLoaded', function() {
     if (typewriterElement) {
         new Typewriter(typewriterElement, phrases);
     }
+
+    // --- Achievements Section Accordion ---
+    const achievementCards = document.querySelectorAll('.achievement-card');
+
+    achievementCards.forEach(card => {
+        const header = card.querySelector('.achievement-card-header');
+        const button = card.querySelector('.achievement-toggle-btn');
+
+        header.addEventListener('click', () => {
+            const isOpen = card.classList.contains('open');
+            
+            // Optional: Close all other cards when one is opened
+            // achievementCards.forEach(c => c.classList.remove('open'));
+
+            if (isOpen) {
+                card.classList.remove('open');
+                button.setAttribute('aria-expanded', 'false');
+            } else {
+                card.classList.add('open');
+                button.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
+
 });
