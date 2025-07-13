@@ -122,8 +122,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const typewriterElement = document.querySelector('.hero-subtitle');
     const phrases = [
         "I build things with AI.",
-        "I'm a Grad Student.",
         "I'm an IEEE-CS Scholar.",
+        "I'm a Grad Student.",
         "I'm a Quizzer.",
         "I'm an Ex-Commvault Engineer.",
         "I'm Learning, Always."
