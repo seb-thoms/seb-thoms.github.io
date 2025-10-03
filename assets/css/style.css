@@ -210,6 +210,7 @@ h1, h2, h3, h4 { font-weight: 600; color: var(--lightest-slate); line-height: 1.
     font-size: 1.1rem;
     line-height: 1.7;
     color: var(--light-slate);
+    text-align: justify;
 }
 .article-body h2, .article-body h3 { margin-top: 2.5em; margin-bottom: 1em; border-bottom: 1px solid var(--lightest-navy); padding-bottom: 0.4em; }
 .article-body p { margin-bottom: 1.5em; }
